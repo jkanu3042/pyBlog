@@ -25,7 +25,7 @@ SECRET_KEY = 'stq_+q_)t2z7jb-5%@q-td5&)%d!0)pw&d*h-e%p)&!mlws@)^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*',]
 
 
 # Application definition
@@ -40,8 +40,12 @@ INSTALLED_APPS = [
 
 # Add to app
     'blog',
+    'dojo',
 
 
+# pip install
+    'django_extensions'
+    
 ]
 
 MIDDLEWARE = [
@@ -54,6 +58,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+#최상위 URLCONF
 ROOT_URLCONF = 'askdjango.urls'
 
 TEMPLATES = [
