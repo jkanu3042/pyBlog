@@ -178,6 +178,10 @@ MESSAGE_TAGS = {constants.ERROR:'danger'}
 
 
 
+NAVER_CLIENT_ID = '9aFTtzF4oHR9HuI6_Gje'
+# 필히 개별 client id를 지정해주세요.
+
+
 
 
 
