@@ -1,0 +1,51 @@
+{% extends "blog/layout.html" %}
+{%  load imagekit %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>{{ post.title }}</h2>
+
+
+{#              <img src="/media/{{ post.photo }}" /> #}
+{#              post.photo 자체가 문자열 출력이므로, 문자열이 없다면 if문을 들어가지 못한다.#}
+                {% if post.photo %}
+                    <img src="{{ post.photo.url }}" />
+                    <img src="{{ post.photo_thumbnail.url }}" />
+
+                    {# thumbnail 태그 이용시1. #}
+                    {%  thumbnail "100x100" post.photo%}
+
+                    {#  thumbnail 태그이용시2. 커스텀하게 구현하고 싶을 때#}
+                    {%  thumbnail "100x100" post.photo as thumb %}
+                    <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" />
+
+                    {# thumbnail 태그 이용시3. image태그 적용 기준 #}
+                    {%  thumbnail "100x100" post.photo -- style="" onclick="" class="" %}
+
+                {% endif %}
+                {{ post.content | linebreaks | urlize}}
+                <hr/>
+
+                <h3>Comments</h3>
+                <ul>
+                    {% for comment in post.comment_set.all %}
+                        <li>
+                            {{ comment.message }}<
+                            <small>{{ comment.author }}</small>
+                            <small>by{{ comment.updated_at }}</small>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <hr/>
+                <a href="{% url "blog:post_list" %}" class="btn btn-primary">글 목록</a>
+                <a href="{% url "blog:post_edit" post.id %}" class="btn btn-warning">글 수정</a>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
