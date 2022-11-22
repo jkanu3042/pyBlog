@@ -27,7 +27,7 @@ olefile==0.44
 pandocfilters==1.4.2
 pickleshare==0.7.4
 pilkit==2.0
-Pillow==4.2.1
+Pillow==9.3.0
 prompt-toolkit==1.0.15
 Pygments==2.2.0
 python-dateutil==2.6.1
